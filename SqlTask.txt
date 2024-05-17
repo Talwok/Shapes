@@ -1,0 +1,26 @@
+Допустим, у нас есть две таблицы: Products (Продукты) и Categories (Категории), а также таблица-связка ProductCategories, которая связывает продукты с категориями. Вот пример структуры таблиц:
+
+Products:
+* ProductID (идентификатор продукта)
+* ProductName (имя продукта)
+
+Categories:
+* CategoryID (идентификатор категории)
+* CategoryName (имя категории)
+
+ProductCategories:
+* ProductID (идентификатор продукта)
+* CategoryID (идентификатор категории)
+
+Тогда запрос будет выглядеть следующим образом:
+SELECT 
+    p.ProductName,
+    c.CategoryName
+FROM 
+    Products p
+LEFT JOIN 
+    ProductCategories pc ON p.ProductID = pc.ProductID
+LEFT JOIN 
+    Categories c ON pc.CategoryID = c.CategoryID
+ORDER BY 
+    p.ProductName, c.CategoryName;
